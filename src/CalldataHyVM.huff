@@ -254,15 +254,15 @@
         // and CALLDATALOAD is implemented as CODECOPY.
 
         // takes                // [destOffset, offest, size]
-        FIX_MEMOFFSET()         // [fixed_destOffset, offest, size]
-        swap1                   // [offest, fixed_destOffset, size]
+        FIX_MEMOFFSET()         // [fixedDestOffset, offest, size]
+        swap1                   // [offest, fixedDestOffset, size]
 
-        push1 0x20              // [0x20, offest, fixed_destOffset, size]
-        calldatasize            // [calldatasize, 0x20, offest, fixed_destOffset, size]
-        sub                     // [runtimCodeLengthOffset, offest, fixed_destOffset, size]
-        calldataload            // [runtimCodeLength, offest, fixed_destOffset, size]
-        add                     // [runtimCodeLength + offest, fixed_destOffset, size]
-        swap1                   // [fixed_destOffset, runtimCodeLength + offest, size]
+        push1 0x20              // [0x20, offest, fixedDestOffset, size]
+        calldatasize            // [calldatasize, 0x20, offest, fixedDestOffset, size]
+        sub                     // [runtimCodeLengthOffset, offest, fixedDestOffset, size]
+        calldataload            // [runtimCodeLength, offest, fixedDestOffset, size]
+        add                     // [runtimCodeLength + offest, fixedDestOffset, size]
+        swap1                   // [fixedDestOffset, runtimCodeLength + offest, size]
 
         calldatacopy            // [value]
 
